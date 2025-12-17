@@ -50,10 +50,10 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
 
     _controller =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 1100));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 1200));
     _fade = Tween(begin: 1.0, end: 0.0).animate(_controller);
 
-    Future.delayed(const Duration(milliseconds: 1100), () async {
+    Future.delayed(const Duration(milliseconds: 1200), () async {
       await _controller.forward();
       if (!mounted) return;
       Navigator.pushReplacement(
@@ -68,66 +68,19 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   @override
-Widget build(BuildContext context) {
-  final isMobile = MediaQuery.of(context).size.width < 600;
-
-  return Scaffold(
-    backgroundColor: Colors.black,
-    body: FadeTransition(
-      opacity: _fade,
-      child: Image.asset(
-        'assets/images/screen_wordsofwisdom.png',
-        fit: isMobile ? BoxFit.contain : BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FadeTransition(
+        opacity: _fade,
+        child: Image.asset(
+          'assets/images/screen_wordsofwisdom.png',
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: double.infinity,
+        ),
       ),
-    ),
-  );
-}
-
-// @override
-// Widget build(BuildContext context) {
-//   return Scaffold(
-//     body: FadeTransition(
-//       opacity: _fade,
-//       child: Stack(
-//         fit: StackFit.expand,
-//         children: [
-//           // Blurred background
-//           Image.asset(
-//             'assets/images/screen_wordsofwisdom.png',
-//             fit: BoxFit.cover,
-//           ),
-//           Container(color: Colors.black.withOpacity(0.3)),
-
-//           // Foreground image (perfect)
-//           Center(
-//             child: Image.asset(
-//               'assets/images/screen_wordsofwisdom.png',
-//               fit: BoxFit.contain,
-//               width: MediaQuery.of(context).size.width * 0.9,
-//             ),
-//           ),
-//         ],
-//       ),
-//     ),
-//   );
-// }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: FadeTransition(
-  //       opacity: _fade,
-  //       child: Image.asset(
-  //         'assets/images/screen_wordsofwisdom.png',
-  //         fit: BoxFit.cover,
-  //         width: double.infinity,
-  //         height: double.infinity,
-  //       ),
-  //     ),
-  //   );
-  // }
+    );
+  }
 }
 
 /* ===================== MODEL ===================== */
